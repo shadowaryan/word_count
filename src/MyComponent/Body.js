@@ -3,39 +3,47 @@ import { useState } from "react";
 
 
 export default function Body() {
-  const [count, setCount] = useState(null);
+  const [text, setText] = useState('');
+  const [count, setCount] = useState('Hi');
   const [frequency, setFrequency] = useState(null);
 
 
   const onChange = (value) => {
-    setCount(value.target.value);
-
+    setText(() => { return value});
+    console.log(value ,text);
+    setCount(text.split(" ").length);
+    freq()
   };
 
-  function freq(str) {
-    console.log(str)
+  function freq(){
+    var str = text;
     let obj = {};
     for (let i = 0; i < str.length; i++) {
+      console.log(i);
       if (obj[str[i]] === undefined) {
         obj[str[i]] = 1;
       } else {
         obj[str[i]] += 1;
       }
+      // break;
     }
     setFrequency(JSON.stringify(obj));
+    return "Hi0;"
   }
 
 
 
   return (
     <div>
-      <input type="text" placeholder="Enter name" onChange={onChange} />
+
+      <input type="text" placeholder="Enter name" onChange={e => {onChange(e.target.value)}} />
+      {text} - {frequency}
       <h3>
-        {count === null ? count : count === "" ? 0 : count.split(" ").length}
+        {/* {count === null ? count : count === "" ? 0 : count.split(" ").length} */}
       </h3>
       <br />
       <p>
-      {count === null ? count : count === "" ? 0 : freq(count)}
+      {/* {count === null ? count : count === "" ? 0 : freq(count)} */}
       {/* {frequency===null ? "nothing":frequency} */}
       </p>
     </div>
