@@ -11,7 +11,7 @@ export default function Body() {
   const onChange = (value) => {
     setText(() => { return value});
     console.log(value ,text);
-    setCount(text.split(" ").length);
+    setCount(text.trim().split(/\s+/).length);
     freq(value)
   };
 
