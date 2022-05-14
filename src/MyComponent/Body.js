@@ -12,11 +12,11 @@ export default function Body() {
     setText(() => { return value});
     console.log(value ,text);
     setCount(text.split(" ").length);
-    freq()
+    freq(value)
   };
 
-  function freq(){
-    var str = text;
+  function freq(str){
+    // var str = text;
     let obj = {};
     for (let i = 0; i < str.length; i++) {
       console.log(i);
